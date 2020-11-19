@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>The Dating App</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='Stylesheet.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+<div class="grid"> 
+    <div class="signup">    
+    <h1>Sign Up</h1>
+        <form id= "form1" name="form"> 
+    
+            <label for="fname">First Name:</label><br>  
+            <input type="text"  size=20  id="fname" name="fname" placeholder="Firstname"><br> <!-- [a-z,A-Z,ÆØÅ,æøå] ????-->
+
+            <label for="lname">Last Name:</label><br>
+            <input type="text" size=20 id="lname" name="lname" placeholder="Lastname"><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" size=20 id="email" name="email" placeholder="Email"><br>
+
+
+            <label for="uname">Username:</label><br>
+            <input type="uname" size=20 id="uname" name="uname" placeholder="Username"><br>
+
+
+            <label for="pwd">Password:</label><br>
+            <input type="password" size=20 id="pwd" name="pwd" placeholder="Password"><br>
+
+            <label for="cpwd">Confirm Password:</label><br>
+            <input type="password" size=20 id="cpwd" name="cpwd" placeholder="Confirm Password"><br>
+
+            <label for="cpr">CPR:</label><br>
+            <input type="text" size=11 id="cpr" name="cpr" placeholder="CPR"><br>
+        
+
+            <div id=radiobuttons> 
+            <label for="gender class="radio-inline">Gender</label><br>
+            
+            <input type="radio" id= "male" name="gender"><label for="male" class="radio-inline">Male</label>
+            <input type="radio" id="female" name="gender"><label for="female" class="radio-inline">Female</label><br>
+
+            <button type="button" id="subButton">Submit</button>
+            </div>
+    </div>
+
+    <div class="login">      
+    <h1>Login</h2>
+        <form id= "form2" name="form"> 
+        
+            <label for="uname">Username:</label><br>
+            <input type="uname" size=20 id="uname" name="uname" placeholder="Username"><br>
+
+            <label for="pwd">Password:</label><br>
+            <input type="password" size=20 id="pwd" name="pwd" placeholder="Password"><br>
+
+            <button type="button" id="loginButton">Login</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>
