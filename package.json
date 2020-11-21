@@ -1,0 +1,20 @@
+{
+  "name": "dating_app_ex",
+  "version": "1.0.0",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theis1997/EX1S.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theis1997/EX1S/issues"
+  },
+  "homepage": "https://github.com/theis1997/EX1S#readme",
+  "description": ""
+}
