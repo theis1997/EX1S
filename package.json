@@ -16,5 +16,8 @@
     "url": "https://github.com/theis1997/EX1S/issues"
   },
   "homepage": "https://github.com/theis1997/EX1S#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
