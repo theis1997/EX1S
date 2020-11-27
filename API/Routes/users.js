@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // nedenstående skal bare være ("/") fordi linjen: app.use("/users",userRoutes); henviser alle requests om users/users endpointet i url'en henvises  til denne fil go ska lderfor ikke henvises videre da denne controller er "sidste stop" -> tager sig af hvor der skal hentes/sendes
 
 router.get("/", (req, res, next) => {
@@ -24,7 +23,7 @@ router.get("/:username", (req, res, next) => {
     const id = req.params.username;
     if (id === "Theis1997") {
         res.status(200).json({
-            message: "You loggeed into user: Theis1997",
+            message: "You logged into user: Theis1997",
             id: id
         });
     } else {
@@ -38,7 +37,7 @@ router.get("/:username", (req, res, next) => {
 
 router.patch("/:username", (req, res, next) => {
     res.status(200).json({
-        message: "Updated product!"
+        message: "Updated user!"
     });
 });
 
@@ -49,20 +48,7 @@ router.delete("/:username", (req, res, next) => {
     });
 });
 
-
-
-
-
-
-
 module.exports = router;
-
-
-
-
-
-
-
 
 
 
