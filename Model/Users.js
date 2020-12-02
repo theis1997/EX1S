@@ -24,6 +24,7 @@ class User{
 
         button.addEventListener("click", function() {
             (form.value) 
+            // her skal der sendes en httprequest som skal kobles med en post 
 
 
 
