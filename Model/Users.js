@@ -61,5 +61,7 @@ class User{
 };
 
 
-
+document.addEventListner("DomContentloaded" , () =>{
+    document.getElementById("subButton").addEventListener("click", createProfile);
+});
 

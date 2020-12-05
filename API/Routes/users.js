@@ -54,7 +54,7 @@ router.post("/", (req, res, next) => {
     })
     .catch(err => console.log(err));
     res.status(200).json({
-        message: "Handling POST requests to /Post",
+        message: "Created your user sucessfully",
         createdUser: user
     });
 });

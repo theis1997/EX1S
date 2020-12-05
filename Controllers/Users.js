@@ -31,4 +31,4 @@ module.exports = {userGetAll, userPost, userGet, userPatch, userDelete}
 
 
 //Dette skal på en eller anden måde implementeres i de ovenstående controllers ;/
-/*
+*/
