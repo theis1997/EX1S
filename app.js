@@ -3,6 +3,7 @@ var app = express();
 const PORT = 3001;
 var bodyParser = require("body-parser"); // Bruges til at parse bodies kan båe URL og JSON format
 const mongoose = require("mongoose");
+const cors = require("cors")
 
 
 const userRouter = require("./API/Routes/users");
@@ -13,6 +14,10 @@ mongoose.connect("mongodb+srv://node-Datingapp:chukwudubem97@cluster0.moqel.mong
 useNewUrlParser: true,
 useUnifiedTopology: true}
 ); 
+
+//nyt
+app.use(cors())
+
 
 
 app.use(bodyParser.urlencoded({extended: false})); // extended er her false fordi vi ikke har brug for at sende extended bodies med rich data (true) -> slå rich data op 
@@ -31,6 +36,12 @@ app.use((req, res, next) => {
     }
     next();
   });
+
+
+
+
+
+
 
 app.use("/Users",userRouter); 
 app.use("/Match",matchRouter);

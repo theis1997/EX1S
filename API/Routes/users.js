@@ -47,9 +47,7 @@ router.post("/", (req, res, next) => {
         age: req.body.age,
         interests: req.body.interests
     });
-    user
-        .save()
-        .then(result => {
+    user.save().then(result => {
         console.log(result);
     })
     .catch(err => console.log(err));

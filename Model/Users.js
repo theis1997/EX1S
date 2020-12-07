@@ -12,24 +12,42 @@ class User{
     };
 
     
-    createProfile(){
-        var button = document.getElementById("subButton");
-        var username = document.getElementById("uname");
-        var firstname = document.getElementById("fname");
-        var lastName = document.getElementById("lname")
-        var gender = document.getElementById("gender")
-        var age = document.getElementById("age")
-        var interests = document.getElementById("interest1","interest2","interest3")
-        var form = document.getElementById("form1") //måske er denne nok og ovenstående idelementer kan udelades!
-
-        button.addEventListener("click", function() {
-            (form.value) 
+    
+        
             // her skal der sendes en httprequest som skal kobles med en post 
+             createProfile(ev){
+                ev.preventDefault();  //to stop the form submitting
+                let user = {
+                id: Date.now,
+                firstname: document.getElementById('firstname').value,
+                lastname: document.getElementById('lastname').value,
+                username: document.getElementById('username').value,
+                age: document.getElementById('age').value,
+                interests: document.getElementById('interests').value,
+                password: document.getElementById('pwd').value,
+                //gender: document.getElementById('gender').value FEJLER!
+                gender: 'male' // Hardcoded FOR TEST.
+                };
+                console.log(user);
+    
+                document.forms[0].reset(); // to clear the form for the next entries
+                //document.querySelector('form').reset();
+    
+                //for display purposes only
+                console.warn('added' , {user} );
+                let pre = document.querySelector('#msg pre');
+                pre.textContent = '\n' + JSON.stringify(user, '\t', 2);
+    
+                axios.post("http://localhost:3001/users/", {user})
+                .then(user => showOutput(user))
+                .catch(err => console.error(err));
+    };
+    
 
 
 
-    }
-    )}// ovenstående skal fikses
+
+    // ovenstående skal fikses
 
     uploadProfilePicture(){
 
@@ -62,6 +80,6 @@ class User{
 
 
 document.addEventListner("DomContentloaded" , () =>{
-    document.getElementById("subButton").addEventListener("click", createProfile);
+    document.getElementById("regButton").addEventListener("click", createProfile);
 });
 
