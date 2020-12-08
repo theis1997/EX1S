@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose")
 
-const User = require("../models/user.js") // user klassen/skema importeres fra fra user-modelfilen
+const User = require("../models/user.js"); // user klassen/skema importeres fra fra user-modelfilen
+const { db } = require("../models/user.js");
 
 
 //importerede controllerFunctions:
@@ -58,11 +59,40 @@ router.post("/", (req, res, next) => {
 });
 
 
+router.post("/login", (req, res, next) => {
+    db.users.find.one(
+        {username: req.body.username},
+        {password: req.body.password}
+    )
+    if (db.users.find.one() == null)
+        return ("User not found")
+
+    else {
+    window.localStorage.setItem("username", req.body.username)
+    window.localStorage.setItem("password",req.body.password)
+    }
+    //else window.localStorage.setItem("loggedIn", true)
+});
+    
+    
+    
+   
+
+
+
+
+   
+
+
+
+
+
+
 
 // kolon efterfulgt af id
-router.get("/:userId", (req, res, next) => {
-    const id = req.params.userId;
-    User.findById(id)
+router.get("/:username", (req, res, next) => {
+    const username = req.params.username;
+    User.findOne({username: username})
       .exec()
       .then(doc => {
         console.log("From database", doc);
@@ -80,13 +110,13 @@ router.get("/:userId", (req, res, next) => {
       });
   });
 
-router.patch("/:userId", (req, res, next) => {
-    const id = req.params.userId;
+router.patch("/:username", (req, res, next) => {
+    const username = req.params.username;
     const updateOps = {};
     for (const ops of req.body){
         updateOps[ops.propName] = ops.value;
     }
-    User.update({_id: id}, {$set: updateOps}) //der ændres på objektet der refereres til med et givent id (ændres kun på objekter der opfylder id-kriteriet) . Her bruges propertyen $set, (mongoose) til at ændre json-objektet ud fra det value/key-set som er defineret i objektets schema/klasse //Eller som i nuværende kode: js-Objektet updateOps oprettes og der loopes igennem alle req.body operations -  req.body opfattes som array
+    User.update({username: username}, {$set: updateOps}) //der ændres på objektet der refereres til med et givent id (ændres kun på objekter der opfylder id-kriteriet) . Her bruges propertyen $set, (mongoose) til at ændre json-objektet ud fra det value/key-set som er defineret i objektets schema/klasse //Eller som i nuværende kode: js-Objektet updateOps oprettes og der loopes igennem alle req.body operations -  req.body opfattes som array
     .exec()
     .then(result => {
         console.log(result);
@@ -102,9 +132,9 @@ router.patch("/:userId", (req, res, next) => {
 // Der kan med denne metode patches enkelte values af gangen i stedet for at patche alle values
 
 
-router.delete("/:userId", (req, res, next) => {
-    const id = req.params.userId;
-    User.remove({_id: id})
+router.delete("/:username", (req, res, next) => {
+    const username = req.params.username;
+    User.remove({username: username})
     .exec()
     .then(result => {
         res.status(200).json(result);

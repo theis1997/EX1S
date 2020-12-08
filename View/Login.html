@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login">      
+        <h1>Login</h2>
+            <form class = "container"  id= "formLogin" name="formLogin"> 
+            
+                <label for="username">Username:</label><br>
+                <input type="text" size=20 id="username" name="username" placeholder="Username"><br>
+    
+                <label for="password">Password:</label><br>
+                <input type="password" size=20 id="password" name="password" placeholder="Password"><br>
+    
+                <button type="button" id="loginButton">Login</button>
+        </form>
+        </div>
+    
+    
+ <script>
+     window.addEventListener("DOMContentLoaded", function StorageLogin() { 
+
+    localStorage.getItem("username")
+    localStorage.getItem("password")
+    if ("username" === null || "password" === null )
+        return "Please enter valid username and password to login"
+    
+    
+    else 
+     });
+    
+  
+
+
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    const login = (ev) => {
+            ev.preventDefault();
+        var user = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,    
+        };
+
+        document.forms[0].reset();
+
+        // evt. stringify først her for at kunne sammenligne med stringified object i localStorage 
+        // loop igennem localstroage array og test om username og password kan findes i localstorage -> if true/ if user === loginInfo -> send videre til href / else kør nedenstående
+
+
+        const Http = new XMLHttpRequest();
+            const url='http://localhost:3001/users/login';
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type","application/json")
+            var data = JSON.stringify(user)
+            Http.send(data);
+            Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+            };
+
+
+        console.log(user);
+    };
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('loginButton').addEventListener('click', login);
+        });
+
+    </script>
+
+    
+     
+</body>
+</html>
